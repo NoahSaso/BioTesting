@@ -3,7 +3,7 @@ Name: BioTesting
 Depends: mobilesubstrate
 Version: 0.0.1
 Architecture: iphoneos-arm
-Description: An awesome MobileSubstrate tweak!
+Description: Working example of BiometricKit
 Maintainer: Sassoty <sassoty@gmail.com>
 Author: Sassoty <sassoty@gmail.com>
 Section: Tweaks
