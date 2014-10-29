@@ -10,6 +10,7 @@
 	BOOL isMonitoring;
 	BOOL previousMatchingSetting;
 }
-- (void)startMonitoring;
-- (void)stopMonitoring;
++(id)sharedInstance;
+-(void)startMonitoring;
+-(void)stopMonitoring;
 @end

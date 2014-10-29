@@ -2,7 +2,15 @@
 #import "BTTouchIDController.h"
 #import <objc/runtime.h>
 
+static BTTouchIDController* controller;
+
 @implementation BTTouchIDController
+
++(id)sharedInstance {
+	if(!controller)
+		controller = [[BTTouchIDController alloc] init];
+	return controller;
+}
 
 -(void)biometricEventMonitor:(id)monitor handleBiometricEvent:(unsigned)event {
 	switch(event) {
@@ -27,7 +35,7 @@
 	}
 }
 
-- (void)startMonitoring {
+-(void)startMonitoring {
 	if(isMonitoring) return;
 	isMonitoring = YES;
 	SBUIBiometricEventMonitor* monitor = [[objc_getClass("BiometricKit") manager] delegate];
@@ -38,7 +46,7 @@
 	log(@"Started monitoring");
 }
 
-- (void)stopMonitoring {
+-(void)stopMonitoring {
 	if(!isMonitoring) return;
 	isMonitoring = NO;
 	SBUIBiometricEventMonitor* monitor = [[objc_getClass("BiometricKit") manager] delegate];
