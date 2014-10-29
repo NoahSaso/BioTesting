@@ -2,14 +2,15 @@
 #import "BTTouchIDController.h"
 #import <objc/runtime.h>
 
-static BTTouchIDController* controller;
-
 @implementation BTTouchIDController
 
 +(id)sharedInstance {
-	if(!controller)
-		controller = [[BTTouchIDController alloc] init];
-	return controller;
+	static id sharedInstance = nil;
+	static dispatch_once_t token = 0;
+	dispatch_once(&token, ^{
+		sharedInstance = [self new];
+	});
+	return sharedInstance;
 }
 
 -(void)biometricEventMonitor:(id)monitor handleBiometricEvent:(unsigned)event {
