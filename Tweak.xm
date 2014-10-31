@@ -1,4 +1,3 @@
-#import "interfaces.h"
 #import "BTTouchIDController.h"
 
 %hook SpringBoard
